@@ -1,13 +1,20 @@
 "use client";
 
 import { HamburgerMenu } from "@/components/ui/hamburger-menu";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, History, Heart, Target, Users } from "lucide-react";
+
+const team = [
+  { name: "Equipo KAIA", role: "Producción y Estampado", image: "https://picsum.photos/seed/printing-workshop-madrid/400/500" },
+  { name: "Diseño Creativo", role: "Concepto y Arte", image: "https://picsum.photos/seed/design-team/400/500" }
+];
 
 export default function NosotrosPage() {
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
-      <header className="w-full py-6 lg:py-8 absolute top-0 z-50">
+      {/* Navigation Menu */}
+      <header className="w-full py-6 lg:py-8 border-b border-gray-100">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 flex justify-between items-center">
           <Link href="/" className="text-3xl font-bold tracking-tighter hover:opacity-70 transition-opacity">
             KAIA.
@@ -15,60 +22,97 @@ export default function NosotrosPage() {
           <HamburgerMenu />
         </div>
       </header>
-      <main className="w-full pt-32 pb-24 max-w-[1400px] mx-auto px-4 sm:px-6">
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-12">Nosotros</h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
-          <div className="space-y-8">
-            <h2 className="text-3xl font-bold">Nuestra Historia</h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              Fundada en el corazón de Madrid, KAIA nació como un pequeño taller familiar con una visión clara: elevar el estándar del estampado textil en España. Lo que comenzó como un proyecto personal para ayudar a iglesias locales con sus uniformes de jóvenes, pronto se convirtió en un estudio creativo de referencia para marcas y empresas.
-            </p>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              Con más de una década de experiencia combinada en diseño gráfico y técnicas de impresión, nuestro equipo se dedica a transformar telas comunes en portadores de mensajes potentes y diseños memorables.
-            </p>
-          </div>
-          <div className="relative aspect-square rounded-3xl overflow-hidden bg-gray-100">
-            <Image
-              src="https://picsum.photos/seed/kaia-history/800/800"
-              alt="Historia de KAIA"
-              fill
-              className="object-cover grayscale"
-              unoptimized
-            />
-          </div>
-        </div>
+      <main className="w-full pb-24">
+        {/* Hero Section */}
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 py-12 md:py-24">
+          <h1 className="text-[3rem] sm:text-[5rem] lg:text-[100px] font-bold tracking-tighter leading-[0.9] mb-12">
+            Nuestra Historia.
+          </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
-          <div className="space-y-4">
-            <div className="w-12 h-1 bg-black mb-6"></div>
-            <h3 className="text-2xl font-bold uppercase tracking-tighter">Nuestra Misión</h3>
-            <p className="text-gray-500 leading-relaxed">
-              Empoderamos a comunidades, marcas y emprendedores a través de productos personalizados que comunican su identidad única con orgullo y calidad profesional.
-            </p>
-          </div>
-          <div className="space-y-4">
-            <div className="w-12 h-1 bg-black mb-6"></div>
-            <h3 className="text-2xl font-bold uppercase tracking-tighter">Nuestra Visión</h3>
-            <p className="text-gray-500 leading-relaxed">
-              Ser el taller de estampado líder en sostenibilidad y creatividad, fusionando técnicas artesanales con tecnología de vanguardia para resultados impecables.
-            </p>
-          </div>
-          <div className="space-y-4">
-            <div className="w-12 h-1 bg-black mb-6"></div>
-            <h3 className="text-2xl font-bold uppercase tracking-tighter">Valores</h3>
-            <p className="text-gray-500 leading-relaxed">
-              Calidad, cercanía y propósito. Cada prenda que sale de nuestro taller lleva el sello de compromiso con el cliente y el respeto por el diseño original.
-            </p>
-          </div>
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
+            <div className="md:col-span-8">
+              <div className="relative aspect-video mb-12 overflow-hidden rounded-sm grayscale">
+                <Image
+                  src="https://picsum.photos/seed/workshop-vibe/1200/675"
+                  alt="KAIA Workshop Origin"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-1000"
+                  unoptimized
+                />
+              </div>
 
-        <div className="bg-black text-white p-12 md:p-24 rounded-3xl">
-          <div className="max-w-3xl">
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 italic">&quot;El estampado no es solo tinta sobre tela; es la expresión de una idea que merece ser vista.&quot;</h2>
-            <p className="text-xl text-gray-400">— El Equipo de KAIA</p>
+              <div className="max-w-[800px] space-y-8">
+                <div className="flex items-start gap-4">
+                  <div className="bg-black text-white p-3 rounded-full mt-1 shrink-0">
+                    <History size={24} />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold mb-4">Desde Madrid al mundo</h2>
+                    <p className="text-xl text-gray-600 leading-relaxed">
+                      KAIA nació de una pasión por el diseño y la necesidad de ofrecer productos personalizados con un propósito claro. Empezamos en un pequeño taller en Madrid, enfocados en servir a iglesias y ministerios juveniles que buscaban una identidad visual potente para sus congresos y campamentos.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-black text-white p-3 rounded-full mt-1 shrink-0">
+                    <Heart size={24} />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold mb-4">Nuestros Valores</h2>
+                    <p className="text-xl text-gray-600 leading-relaxed">
+                      Creemos en la excelencia, no como un fin, sino como un acto de servicio. Cada camiseta estampada, cada taza personalizada, lleva consigo el esfuerzo de un equipo que valora la calidad y el mensaje que el cliente quiere transmitir.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="md:col-span-4 bg-gray-50 p-8 rounded-sm sticky top-8">
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <Target size={20} /> Nuestra Misión
+              </h3>
+              <p className="text-gray-500 mb-8 leading-relaxed">
+                Empoderar a comunidades, iglesias y empresas a través de productos personalizados de alta calidad que comuniquen sus valores e identidad de manera impactante.
+              </p>
+
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <Users size={20} /> Nuestra Visión
+              </h3>
+              <p className="text-gray-500 leading-relaxed">
+                Convertirnos en el taller de referencia en España para proyectos creativos que buscan algo más que un simple estampado: una verdadera colaboración creativa.
+              </p>
+            </div>
           </div>
-        </div>
+        </section>
+
+        {/* Team Section */}
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 py-24 border-t border-gray-100">
+          <div className="flex justify-between items-end mb-16">
+            <h2 className="text-4xl font-bold tracking-tighter uppercase">El Equipo detras de KAIA</h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
+            {team.map((member, i) => (
+              <div key={i} className="group cursor-pointer">
+                <div className="relative aspect-[3/4] mb-4 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+                  <Image src={member.image} alt={member.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" unoptimized />
+                </div>
+                <h4 className="text-xl font-bold">{member.name}</h4>
+                <p className="text-gray-500">{member.role}</p>
+              </div>
+            ))}
+
+            <div className="bg-black text-white p-8 md:p-12 flex flex-col justify-between rounded-sm">
+              <h3 className="text-3xl font-bold tracking-tighter leading-none mb-8">Unete a nuestra lista de clientes</h3>
+              <p className="text-gray-400 mb-10 leading-relaxed">Estamos listos para dar vida a tus ideas con la mejor calidad del mercado.</p>
+              <Link href="/contacto" className="group flex items-center gap-2 font-bold text-white hover:underline">
+                Hablemos ahora <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
