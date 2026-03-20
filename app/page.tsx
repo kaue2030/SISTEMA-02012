@@ -185,6 +185,15 @@ export default function Page() {
           </div>
         </section>
 
+        {/* Countdown Section */}
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 py-16 md:py-24 border-t border-gray-100">
+          <div className="flex flex-col items-center text-center">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">Próxima Colección</h2>
+            <p className="text-gray-500 mb-10 max-w-md">Estamos preparando algo increíble. No te pierdas el lanzamiento de nuestra nueva línea de básicos premium.</p>
+            <Countdown />
+          </div>
+        </section>
+
         {/* Featured Products */}
         <section className="max-w-[1400px] mx-auto px-4 sm:px-6 py-16 md:py-24">
           <div className="flex justify-between items-end mb-10">
