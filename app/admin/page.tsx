@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   LayoutDashboard,
   FileText,
@@ -15,7 +15,8 @@ import {
   Trash2,
   Save,
   X,
-  Menu
+  Menu,
+  CheckCircle2
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,6 +24,7 @@ import Link from "next/link";
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState("nosotros");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [saveStatus, setSaveStatus] = useState(false);
 
   const [nosotrosContent, setNosotrosContent] = useState({
     history: "KAIA nació de una pasión por el diseño y la necesidad de ofrecer productos personalizados con un propósito claro. Empezamos en un pequeño taller en Madrid...",
@@ -35,6 +37,30 @@ export default function AdminPage() {
     { id: 2, name: "Sudadera Grupo", price: "€25.00", image: "https://picsum.photos/seed/hoodie-mockup-black/100/100" },
     { id: 3, name: "Taza Estampada", price: "€8.00", image: "https://picsum.photos/seed/mug-mockup-white/100/100" }
   ]);
+
+  // Use a timeout to avoid cascading render lint error
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("kaia_nosotros");
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          const timer = setTimeout(() => {
+            setNosotrosContent(parsed);
+          }, 0);
+          return () => clearTimeout(timer);
+        } catch (e) {
+          console.error("Error parsing saved content", e);
+        }
+      }
+    }
+  }, []);
+
+  const handleSave = useCallback(() => {
+    localStorage.setItem("kaia_nosotros", JSON.stringify(nosotrosContent));
+    setSaveStatus(true);
+    setTimeout(() => setSaveStatus(false), 3000);
+  }, [nosotrosContent]);
 
   return (
     <div className="min-h-screen bg-gray-50 flex font-sans selection:bg-black selection:text-white">
@@ -102,8 +128,11 @@ export default function AdminPage() {
               <div className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm space-y-6">
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-lg font-bold flex items-center gap-2 italic uppercase"><Edit3 size={18} /> Historia del Taller</h2>
-                  <button className="text-sm font-bold bg-black text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-800 transition-colors">
-                    <Save size={16} /> Guardar Cambios
+                  <button
+                    onClick={handleSave}
+                    className={`text-sm font-bold px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${saveStatus ? 'bg-green-600 text-white' : 'bg-black text-white hover:bg-gray-800'}`}
+                  >
+                    {saveStatus ? <><CheckCircle2 size={16} /> Guardado</> : <><Save size={16} /> Guardar Cambios</>}
                   </button>
                 </div>
                 <textarea

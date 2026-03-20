@@ -1,16 +1,40 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { HamburgerMenu } from "@/components/ui/hamburger-menu";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, History, Heart, Target, Users } from "lucide-react";
 
-const team = [
+const initialTeam = [
   { name: "Equipo KAIA", role: "Producción y Estampado", image: "https://picsum.photos/seed/printing-workshop-madrid/400/500" },
   { name: "Diseño Creativo", role: "Concepto y Arte", image: "https://picsum.photos/seed/design-team/400/500" }
 ];
 
 export default function NosotrosPage() {
+  const [content, setContent] = useState({
+    history: "KAIA nació de una pasión por el diseño y la necesidad de ofrecer productos personalizados con un propósito claro. Empezamos en un pequeño taller en Madrid, enfocados en servir a iglesias y ministerios juveniles que buscaban una identidad visual potente para sus congresos y campamentos.",
+    mission: "Empoderar a comunidades, iglesias y empresas a través de productos personalizados de alta calidad que comuniquen sus valores e identidad de manera impactante.",
+    vision: "Convertirnos en el taller de referencia en España para proyectos creativos que buscan algo más que un simple estampado: una verdadera colaboración creativa."
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("kaia_nosotros");
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          const timer = setTimeout(() => {
+            setContent(parsed);
+          }, 0);
+          return () => clearTimeout(timer);
+        } catch (e) {
+          console.error("Error loading saved content", e);
+        }
+      }
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
       {/* Navigation Menu */}
@@ -49,8 +73,8 @@ export default function NosotrosPage() {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold mb-4">Desde Madrid al mundo</h2>
-                    <p className="text-xl text-gray-600 leading-relaxed">
-                      KAIA nació de una pasión por el diseño y la necesidad de ofrecer productos personalizados con un propósito claro. Empezamos en un pequeño taller en Madrid, enfocados en servir a iglesias y ministerios juveniles que buscaban una identidad visual potente para sus congresos y campamentos.
+                    <p className="text-xl text-gray-600 leading-relaxed whitespace-pre-wrap">
+                      {content.history}
                     </p>
                   </div>
                 </div>
@@ -74,14 +98,14 @@ export default function NosotrosPage() {
                 <Target size={20} /> Nuestra Misión
               </h3>
               <p className="text-gray-500 mb-8 leading-relaxed">
-                Empoderar a comunidades, iglesias y empresas a través de productos personalizados de alta calidad que comuniquen sus valores e identidad de manera impactante.
+                {content.mission}
               </p>
 
               <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
                 <Users size={20} /> Nuestra Visión
               </h3>
               <p className="text-gray-500 leading-relaxed">
-                Convertirnos en el taller de referencia en España para proyectos creativos que buscan algo más que un simple estampado: una verdadera colaboración creativa.
+                {content.vision}
               </p>
             </div>
           </div>
@@ -94,7 +118,7 @@ export default function NosotrosPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
-            {team.map((member, i) => (
+            {initialTeam.map((member, i) => (
               <div key={i} className="group cursor-pointer">
                 <div className="relative aspect-[3/4] mb-4 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
                   <Image src={member.image} alt={member.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" unoptimized />
