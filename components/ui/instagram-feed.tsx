@@ -2,14 +2,14 @@ import Image from "next/image";
 import { Instagram } from "lucide-react";
 
 const posts = [
-  { id: 1, imageUrl: "https://picsum.photos/seed/fashion1/400/500", username: "@liamtech", avatarUrl: "https://picsum.photos/seed/avatar1/100/100" },
-  { id: 2, imageUrl: "https://picsum.photos/seed/fashion2/400/500", username: "@noahplays", avatarUrl: "https://picsum.photos/seed/avatar2/100/100" },
-  { id: 3, imageUrl: "https://picsum.photos/seed/fashion3/400/500", username: "@ethansound", avatarUrl: "https://picsum.photos/seed/avatar3/100/100" },
-  { id: 4, imageUrl: "https://picsum.photos/seed/fashion4/400/500", username: "@oliviawears", avatarUrl: "https://picsum.photos/seed/avatar4/100/100" },
-  { id: 5, imageUrl: "https://picsum.photos/seed/fashion5/400/500", username: "@emmacollins", avatarUrl: "https://picsum.photos/seed/avatar5/100/100" },
-  { id: 6, imageUrl: "https://picsum.photos/seed/fashion6/400/500", username: "@mia_style", avatarUrl: "https://picsum.photos/seed/avatar6/100/100" },
-  { id: 7, imageUrl: "https://picsum.photos/seed/fashion7/400/500", username: "@lucas_fit", avatarUrl: "https://picsum.photos/seed/avatar7/100/100" },
-  { id: 8, imageUrl: "https://picsum.photos/seed/fashion8/400/500", username: "@ava_creates", avatarUrl: "https://picsum.photos/seed/avatar8/100/100" },
+  { id: 1, imageUrl: "https://picsum.photos/seed/kaia1/400/500", username: "@kaia_taller", avatarUrl: "https://picsum.photos/seed/avatar1/100/100" },
+  { id: 2, imageUrl: "https://picsum.photos/seed/kaia2/400/500", username: "@kaia_prints", avatarUrl: "https://picsum.photos/seed/avatar2/100/100" },
+  { id: 3, imageUrl: "https://picsum.photos/seed/kaia3/400/500", username: "@kaia_brand", avatarUrl: "https://picsum.photos/seed/avatar3/100/100" },
+  { id: 4, imageUrl: "https://picsum.photos/seed/kaia4/400/500", username: "@kaia_official", avatarUrl: "https://picsum.photos/seed/avatar4/100/100" },
+  { id: 5, imageUrl: "https://picsum.photos/seed/kaia5/400/500", username: "@kaia_studio", avatarUrl: "https://picsum.photos/seed/avatar5/100/100" },
+  { id: 6, imageUrl: "https://picsum.photos/seed/kaia6/400/500", username: "@kaia_taller", avatarUrl: "https://picsum.photos/seed/avatar6/100/100" },
+  { id: 7, imageUrl: "https://picsum.photos/seed/kaia7/400/500", username: "@kaia_prints", avatarUrl: "https://picsum.photos/seed/avatar7/100/100" },
+  { id: 8, imageUrl: "https://picsum.photos/seed/kaia8/400/500", username: "@kaia_brand", avatarUrl: "https://picsum.photos/seed/avatar8/100/100" },
 ];
 
 const PostCard = ({ post }: { post: typeof posts[0] }) => (

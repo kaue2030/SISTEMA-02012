@@ -7,11 +7,12 @@ const cn = (...arr: Array<string | false | null | undefined>) =>
   arr.filter(Boolean).join(" ");
 
 const navigationItems = [
-  { name: "Inicio", href: "/", description: "Volver a la página principal" },
-  { name: "Nosotros", href: "/nosotros", description: "Conoce nuestra historia" },
-  { name: "Servicios", href: "/servicios", description: "Iglesias, Empresas y Marcas" },
-  { name: "Tienda", href: "/tienda", description: "Catálogo completo de productos" },
+  { name: "Inicio", href: "/", description: "Página principal" },
+  { name: "Servicios", href: "/servicios", description: "Lo que podemos hacer" },
+  { name: "Nosotros", href: "/nosotros", description: "Nuestra historia" },
+  { name: "Tienda", href: "/tienda", description: "Productos listos" },
   { name: "Contacto", href: "/contacto", description: "Hablemos de tu proyecto" },
+  { name: "Admin", href: "/login", description: "Acceso al panel" },
 ];
 
 const STAGGER = 0.035;

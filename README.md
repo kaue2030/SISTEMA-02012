@@ -2,19 +2,43 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# KAIA - Taller de Estampado
 
-This contains everything you need to run your app locally.
+Este es el sitio web completo de **KAIA**, un taller de estampado y personalización con sede en Madrid.
 
-View your app in AI Studio: https://ai.studio/apps/546a2b06-68c3-4eff-93e6-7a118ef0653b
+## 🚀 Despliegue en Netlify
 
-## Run Locally
+Para desplegar este sitio en Netlify de forma gratuita:
 
-**Prerequisites:**  Node.js
+1.  **Sube este código a GitHub.**
+2.  Entra en [app.netlify.com](https://app.netlify.com).
+3.  Haz clic en **"Add new site"** > **"Import an existing project"**.
+4.  Selecciona tu repositorio de GitHub.
+5.  Netlify detectará automáticamente que es un proyecto de Next.js.
+    *   **Build command:** `npm run build`
+    *   **Publish directory:** `.next`
+6.  Haz clic en **"Deploy"**.
 
+El archivo `netlify.toml` incluido ya tiene la configuración necesaria para que todo funcione correctamente.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🛠️ Desarrollo Local
+
+**Requisitos:** Node.js v18+
+
+1.  Instala las dependencias:
+    ```bash
+    npm install
+    ```
+2.  Inicia el servidor de desarrollo:
+    ```bash
+    npm run dev
+    ```
+3.  Abre [http://localhost:3000](http://localhost:3000).
+
+## 🔐 Panel de Administración
+
+Para acceder al panel de control y modificar el contenido (los cambios se guardan en el navegador mediante `localStorage`):
+
+*   **Ruta:** `/login`
+*   **Usuario:** `admin@kaia.es`
+*   **Contraseña:** `admin123`

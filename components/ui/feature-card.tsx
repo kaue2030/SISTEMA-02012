@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronUp, Wand2, Loader2, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { GoogleGenAI } from "@google/genai";
 
 interface FeatureCardProps {
@@ -152,7 +153,9 @@ export function FeatureCard({ date, title, description, initialBgImage, classNam
 
             <div className="flex flex-col items-center text-xs sm:text-sm font-medium text-white/90">
               <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 mb-1" />
-              See All
+              <Link href="/servicios" className="pointer-events-auto hover:underline">
+                Ver Todo
+              </Link>
             </div>
           </div>
         </div>
